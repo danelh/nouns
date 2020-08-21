@@ -305,14 +305,14 @@ input[type=number]{
   gtag('config', 'UA-170550843-1');
 </script>
 
-  <title>Latin Verb Trainer</title>
+  <title>Latin Noun Trainer</title>
 </head>
 
 <body>
 
-  <h1> Latin Verb Trainer </h1>  
+  <h1> Latin Noun Trainer </h1>  
 	
-  <a id="info_link" href="https://danelh.github.io/verbs/info.html" target="_blank\"> for instructions and information about this tool </a>
+  <a id="info_link" href="https://danelh.github.io/nouns/info.html" target="_blank\"> for instructions and information about this tool </a>
   <p></p>
   
   <button id="inflections_selection_collapsible_btn" type="button" class="collapsible">Inflections Selection </button>
@@ -340,7 +340,7 @@ input[type=number]{
   <div id="user_verb_selection_div">
 	  <div id=datalist_div>
 		  <label> Manual Selection: </label>
-		  <input id="verb_select" list="verbs_datalist" placeholder="example: amo">
+		  <input id="verb_select" list="verbs_datalist" placeholder="example: cor">
 		  <datalist id="verbs_datalist">
 		  </datalist>  
 	  </div>
@@ -385,7 +385,7 @@ input[type=number]{
   <div id="exam_div">
 	  <label id="practice_label" onclick=exam_div_clicked(0)> Practice </label>
 	  <label class="switch">	
-		<input id="is_exam_cb" type="checkbox" onchange=get_is_on_exam()>
+		<input id="is_exam_cb" type="checkbox" checked="true" onchange=get_is_on_exam()>
 		<span class="slider round"></span>	
 	  </label>
 	  <label id="exam_label" onclick=exam_div_clicked(1)> Exam </label>
@@ -461,18 +461,18 @@ input[type=number]{
 	var mistake_counter = 0;
 	var correct_counter = 0;
 	var is_exam;
-	var compact_loader = $.getJSON({'url': "https://raw.githubusercontent.com/danelh/verbs/master/compact.json", 'async': true});	 
+	var compact_loader = $.getJSON({'url': "https://raw.githubusercontent.com/danelh/nouns/master/compact_nouns.json", 'async': true});	 
 	compact_loader.done(function(){
 		compact_json = compact_loader.responseJSON;
-		all_verbs = compact_json["verbs"];
-		sorted_verbs = compact_json["freq_order"];
+		all_verbs = compact_json["nouns"];
+		sorted_verbs = compact_json["freq_order"];		
 		inflection_codes = compact_json["inf_code_to_text"]		
 		init();}
 	);	
   </script>
   
   <script>
-  function init() {				
+  function init() {	
 	var user_answer_input = document.getElementById("user_answer");	
 	user_answer_input.addEventListener("keydown", function(event) {
 	var x = event.which || event.keyCode;
@@ -546,7 +546,7 @@ input[type=number]{
   }
   
   function get_all_possible_inflections(){
-	return Object.keys(all_verbs["amo"]);
+	return Object.keys(all_verbs["cor"]);
   }
   
   function populate_verbs_in_select(){
@@ -633,7 +633,7 @@ input[type=number]{
 		new_border_color = "#2196F3";
 	}
 	else{
-		new_text = "<h2> Practice Mode </h2> Press (Enter) to submit your response. <br> Press (→) if you already know the required mutation and don't want to be asked again. <br> Click on the verb in question to learn the meaning and mutation of verb"
+		new_text = "<h2> Practice Mode </h2> Press (Enter) to submit your response. <br> Press (?) if you already know the required mutation and don't want to be asked again. <br> Click on the verb in question to learn the meaning and mutation of verb"
 		new_border_color = "#000000";		
 	}
 	p_element.innerHTML = new_text;
@@ -689,7 +689,7 @@ input[type=number]{
   function display_consider(){
 	if (current_mutation in mutation_strike_counter){
 		if (mutation_strike_counter[current_mutation] >= 3){
-			document.getElementById("consider").innerHTML = "You got this right 3 times in a row. cosider pressing (→)";
+			document.getElementById("consider").innerHTML = "You got this right 3 times in a row. cosider pressing (?)";
 		}
 	}
   } 
@@ -744,7 +744,7 @@ input[type=number]{
 	}	
 	
 	document.getElementById("res").style.color = color;
-	document.getElementById("res").innerHTML = get_correct_answer_for_current_mutation();
+	document.getElementById("res").innerHTML = get_correct_answer_for_current_mutation(false);
 	set_answer_counter();
 	
 	if (is_exam){
@@ -893,18 +893,32 @@ input[type=number]{
   
   function is_user_correct(){	
 	user_answer = document.getElementById("user_answer").value;
-	correct_answer = get_correct_answer_for_current_mutation();
-	return (user_answer == correct_answer);
+	correct_answers = get_correct_answer_for_current_mutation(true);
+	return (correct_answers.includes(user_answer));
   }
   
-  function get_correct_answer_for_current_mutation(){	
+  function get_correct_answer_for_current_mutation(is_for_user_check){	
 	dict_res = all_verbs[current_mutation[0]][current_mutation[1]];
 	if (dict_res){
-		dict_res = dict_res.split(",")[0].trim();
-		dict_res = dict_res.replace("  ", " ");
-		dict_res = dict_res.replace(" 1", "");
+		//dict_res = dict_res.split(",")[0].trim();
+		//dict_res = dict_res.replace("  ", " ");
+		//dict_res = dict_res.replace(" 1", "");
+		if (is_for_user_check){
+			dict_res = dict_res.split(" ")		
+			for (i=0; i < dict_res.length; i+=1){
+				dict_res[i] = remove_macrons(dict_res[i]);
+			}
+		}else{
+			// for display:
+			dict_res = dict_res.replace(" ", "/");
+		}
+		
 	}
     return dict_res;
+  }
+  
+  function remove_macrons(s){
+	return s.normalize("NFD").replace(/[\u0300-\u036f]/g, "")	
   }
 
   
@@ -1000,7 +1014,9 @@ input[type=number]{
 		}
 	}
 	
-	// added to 120
+	// added to 16
+	selection_array.push(false);
+	selection_array.push(false);
 	selection_array.push(false);
 	selection_array.push(false);
 	selection_array.push(false);
@@ -1010,10 +1026,15 @@ input[type=number]{
   }
   
   function string_to_selected_inflections(s){
-	_selection_array = string_to_boolean_array(s);
+	console.log(s);
+	_selection_array = string_to_boolean_array(s);	
 	_selection_array.pop();
 	_selection_array.pop();
-	_selection_array.pop();	
+	_selection_array.pop();
+	_selection_array.pop();
+	_selection_array.pop();
+	
+	console.log(_selection_array);
 	selected_inflections = [];
 	for (i=0; i<_selection_array.length; i++){
 		if (_selection_array[i]){
