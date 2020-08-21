@@ -1,0 +1,1140 @@
+<!DOCTYPE HTML>
+<html>
+<style>
+#lstBox1, #lstBox2{
+  height:300px;
+  width:23em;
+}
+
+.transferBtns {
+  margin-right: 30px;
+  margin-left: 30px;
+}
+
+.transferBtns{
+  float:left; 
+  align-self:center;
+}
+
+.approveTermsContainer{
+  display:flex;
+  justify-content:center;
+  padding: 5px;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 70px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(36px);
+  -ms-transform: translateX(36px);
+  transform: translateX(36px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.collapsible {
+  background-color: #777;
+  color: white;
+  cursor: pointer;
+  padding: 18px;  
+  width: 100%;  
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  border-style: solid;
+  border-color: white;
+}
+
+.active, .collapsible:hover {
+  background-color: #555;
+} 
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+ }
+ 
+#missing_div{
+	padding-bottom: 10px;	
+	overflow: hidden;
+}
+
+#missing_inflections_div{
+	float: left;
+	width: 70%;
+	height: 100%;	
+}
+
+#missing_verbs_div{
+	float: right;
+	width: 25%;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+#inflections_error_box{
+	width: 100%;
+	height: 100%;	
+}
+
+#verbs_error_box{
+	width: 100%;
+	height: 100%;	
+
+}
+
+#user_verb_selection_div{
+	float: left;
+	width: 27%;
+	height: 100%;
+	padding: 5px;
+
+}
+
+#selected_verbs_div{
+	float: right;
+	width: 70%;
+	height: 100%;
+	padding: 5px;	
+}
+
+#verbs_box{
+	width: 100%;
+	height: 100%;	
+}
+
+#datalist_div{
+	border-style: solid;
+	border-width: 1px;
+	padding-right: 5px;
+	padding-left: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-radius: 5px;
+}
+
+#auto_selection_div{
+	border-style: solid;
+	border-width: 1px;
+	padding-right: 5px;
+	padding-left: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-radius: 5px;
+}
+
+#random_generator_div{
+	padding-top: 7px;
+}
+
+#practice_label{
+	display: table-cell;
+    vertical-align: middle;
+    text-align:center;
+	padding-right: 4px;
+	font-size: large;
+}
+
+#exam_label{
+	display: table-cell;
+    vertical-align: middle;
+    text-align:center;
+	padding-left: 4px;
+	font-size: large;
+}
+
+#mode_div{
+	width: calc(100% - 44px);
+	height: 100%;
+	border-style: solid;
+	padding: 18px;
+	#overflow: auto;
+	display: table;	
+	#vertical-align: middle;
+	outline: true;
+}
+
+#exam_parent_div{	
+	
+	display: table-cell;
+    vertical-align: middle;
+	#border-style: dashed;
+	width: 30%;
+}
+
+#exam_div{
+	display: table;	
+	padding: 18px;	
+	float:left;	
+}
+
+#instruction_div{
+	display: table-cell;
+	float:left;
+	#border-style: dashed;
+}
+
+#start_btn_div{
+	margin-top:10px;
+}
+
+#start_button{
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+#question{
+	font-size: 24px;
+}
+
+#user_answer{
+	outline: 0;
+	border-width: 0 0 2px;
+	border-color: black;
+	font-size: 24px;
+}
+
+#res{
+	font-size: 24px;
+}
+
+#full_exam_div{
+	width: 100%;
+	overflow: hidden;	
+}
+
+#q_and_a{
+	width: 40em;
+	float: left;	
+}
+
+#exam_status{
+	margin-left: 3em;
+	font-size: 24px;
+}
+
+#info_link{
+	font-size: 20px;
+	padding-left: 5px;
+}
+
+textarea{	
+    line-height: 1.5;
+    border-radius: 5px;
+	box-shadow: 1px 1px 1px #999;
+	border: 1px solid #ccc;
+}
+
+input[type=number]{
+    width: 4em;
+}
+
+</style>
+
+
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-170550843-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-170550843-1');
+</script>
+
+  <title>Latin Verb Trainer</title>
+</head>
+
+<body>
+
+  <h1> Latin Verb Trainer </h1>  
+	
+  <a id="info_link" href="https://danelh.github.io/verbs/info.html" target="_blank\"> for instructions and information about this tool </a>
+  <p></p>
+  
+  <button id="inflections_selection_collapsible_btn" type="button" class="collapsible">Inflections Selection </button>
+  <div class="content">  
+  <div class="approveTermsContainer">
+  <div class="newItems">
+  <b>All inflections:</b><br/>
+           <select multiple="multiple" id='lstBox1'>
+			</select>
+  </div>
+  <div class="transferBtns">
+	<input type='button' id='btnRight' value ='  >  '/>
+	<br/><input type='button' id='btnLeft' value ='  <  '/>
+  </div>
+  <div class="approvedItems">
+        <b>Selected inflections: </b><br/>
+        <select multiple="multiple" id='lstBox2'>
+        </select>
+  </div>
+  </div>  
+  </div>
+    
+  <button id="verbs_selection_collapsible_btn" type="button" class="collapsible">Verbs Selection</button>
+  <div class="content">
+  <div id="user_verb_selection_div">
+	  <div id=datalist_div>
+		  <label> Manual Selection: </label>
+		  <input id="verb_select" list="verbs_datalist" placeholder="example: amo">
+		  <datalist id="verbs_datalist">
+		  </datalist>  
+	  </div>
+	  <div id="auto_selection_div">
+		  <label for="level_select">Choose a level:</label>
+		  <select id="level_select">
+			  <option value="0.1" selected="selected">Top 10% of verbs</option>
+			  <option value="0.25">Top 25% of verbs</option>
+			  <option value="0.5">Top 50% of verbs</option>
+			  <option value="1">All verbs</option>
+		  </select>		  
+		  <div id="random_generator_div">
+			  <label for="number_of_verbs_to_generate_input">Number of verbs to generate:</label>
+			  <input id="number_of_verbs_to_generate_input" type="number" value="10" oninput=number_of_verbs_input_chnage() maxlength="3" size="3">
+			  <button type="button" id="generate_random verbs" onclick=generate_random_verbs()>Generate </button>
+		  </div>
+	  </div>
+  </div>
+  <div id="selected_verbs_div">
+	  <label> Selected Verbs: </label>
+	  <textarea id="verbs_box" name="verbs_box" rows="4" onchange=load_possible_mutations()></textarea>
+  </div>    
+  </div>
+  
+  <button id="missing_collapsible_btn" type="button" class="collapsible">Missing Mutations (0)</button>
+  <div class="content">  
+  <div id="missing_div">  
+  <div id="missing_inflections_div">
+  <p>Missing mutations: <a href="https://danelh.github.io/verbs/info.html#missing-mutations" target="_blank\"> [what is that?] </a> </p>
+  <textarea id="inflections_error_box" name="inflections_error_box" readonly=true disabled=true rows="4"></textarea>  
+  </div>
+  <div id="missing_verbs_div">
+  <p id="verbs_error_p" name="verbs_error_p">Unrecognized verbs. <a href="https://danelh.github.io/verbs/info.html#missing-mutations" target="_blank\"> [why?] </a> </p>
+  <textarea id="verbs_error_box" name="verbs_error_box" rows="4" readonly=true disabled=true></textarea> 
+  </div>
+  </div>
+  </div>
+  
+  <div class="filler">
+  <div id="mode_div">
+  <div id="exam_parent_div">
+  <div id="exam_div">
+	  <label id="practice_label" onclick=exam_div_clicked(0)> Practice </label>
+	  <label class="switch">	
+		<input id="is_exam_cb" type="checkbox" onchange=get_is_on_exam()>
+		<span class="slider round"></span>	
+	  </label>
+	  <label id="exam_label" onclick=exam_div_clicked(1)> Exam </label>
+  </div>
+  </div>  
+  
+  <div id="instruction_div">
+	<p id="instruction_p"></p>
+  </div>
+  
+  </div>
+  </div>
+
+  <div id="start_btn_div">
+  <button type="button" id="start_button" onclick=init_exam()>Start</button>
+  </div>
+  
+  <div id="full_exam_div">
+  <div id="q_and_a">
+	  <p id="question"></p>
+	  <p id="consider"></p>
+	  <input type="text" id="user_answer">
+	  <p id="res"><br></p>
+	  <!-- empty line - to avoid slide when "res" to be the last line -->	  
+	  <br>
+  </div>     
+  <div id="exam_status">
+	  <p id="mutations_left"></p>
+	  <p id="answer_counter"></p>  
+  </div>
+  </div>
+  
+  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+  
+  <script>
+  $(document).ready(function() {	
+    $('#btnRight').click(function(e) {
+        var selectedOpts = $('#lstBox1 option:selected');
+        if (selectedOpts.length == 0) {
+            //alert("Nothing to move.");
+            e.preventDefault();
+        }
+
+        $('#lstBox2').append($(selectedOpts).clone());
+        $(selectedOpts).remove();
+        e.preventDefault();
+		load_possible_mutations();
+		update_url_params();
+    });
+
+    $('#btnLeft').click(function(e) {
+        var selectedOpts = $('#lstBox2 option:selected');
+        if (selectedOpts.length == 0) {
+            //alert("Nothing to move.");
+            e.preventDefault();
+        }
+
+        $('#lstBox1').append($(selectedOpts).clone());
+        $(selectedOpts).remove();
+        e.preventDefault();
+		load_possible_mutations();
+		update_url_params();
+    });
+  });
+  </script>
+  
+  <script>
+	var timerStart = Date.now();
+	var all_verbs, sorted_verbs, inflection_codes;
+	var mutation_dict;
+	var current_mutation, last_mutation;
+	var selected_verbs = [];
+	var mistake_counter = 0;
+	var correct_counter = 0;
+	var is_exam;
+	var compact_loader = $.getJSON({'url': "https://raw.githubusercontent.com/danelh/verbs/master/compact.json", 'async': true});	 
+	compact_loader.done(function(){
+		compact_json = compact_loader.responseJSON;
+		all_verbs = compact_json["verbs"];
+		sorted_verbs = compact_json["freq_order"];
+		inflection_codes = compact_json["inf_code_to_text"]		
+		init();}
+	);	
+  </script>
+  
+  <script>
+  function init() {				
+	var user_answer_input = document.getElementById("user_answer");	
+	user_answer_input.addEventListener("keydown", function(event) {
+	var x = event.which || event.keyCode;
+	if (x === 13) {		
+		conclude_q();
+	}
+	else if (x === 39){		
+		remove_mutation();
+	}
+	else{		
+		document.getElementById("res").innerHTML = "<br>";
+	}
+	});
+	
+	init_collapsibles();
+	populate_inflections();
+	populate_verbs_in_select();
+	load_verb_selection_params_from_url();
+	get_is_on_exam();	
+	selected_inflections_to_string();
+  }
+  
+  function init_collapsibles(){
+	var coll = document.getElementsByClassName("collapsible");
+	var i;
+	for (i = 0; i < coll.length; i++) {
+		coll[i].addEventListener("click", function() {
+			this.classList.toggle("active");
+			var content = this.nextElementSibling;
+			if (content.style.display === "block") {
+				content.style.display = "none";
+			} else {
+				content.style.display = "block";
+			}
+		});
+	}
+  }
+  
+  function populate_inflections(){	
+	default_inflections = load_default_inflections();
+	all_possible_inflections = get_all_possible_inflections();
+	var from_box =  document.getElementById("lstBox1");
+	var to_box = document.getElementById("lstBox2");
+	for (i = 0; i < all_possible_inflections.length; i++) {
+		var cur_value = all_possible_inflections[i];
+		var opt = document.createElement("option");
+		opt.value= cur_value;
+		opt.innerHTML = inflection_codes[cur_value];
+
+		if (default_inflections.includes(cur_value)){		
+			to_box.appendChild(opt);
+		}
+		else {
+			from_box.appendChild(opt);
+		}		
+	}
+	
+	update_inflection_collapsible_text();	
+  }
+  
+  function update_url_params(){
+	inflection_code = selected_inflections_to_string();
+	nv = selected_number_of_verbs_to_string();
+	level = selected_level_to_string();
+	var url_string = window.location.href
+	var url = new URL(url_string);
+	url.searchParams.set("inflections", inflection_code);
+	url.searchParams.set("nv", nv);
+	url.searchParams.set("level", level);
+	window.history.pushState('updated params', '', url.toString());
+  }
+  
+  function get_all_possible_inflections(){
+	return Object.keys(all_verbs["amo"]);
+  }
+  
+  function populate_verbs_in_select(){
+	verbs_keys = Object.keys(all_verbs)
+	var verb_select = document.getElementById("verbs_datalist");
+	var verb_select_parent = document.getElementById("verb_select");
+	for (i = 0, k_len=verbs_keys.length; i < k_len; i++) {
+		var opt = document.createElement("option");
+		opt.value= verbs_keys[i];
+		opt.innerHTML = verbs_keys[i];	   
+		verb_select.appendChild(opt);
+	}
+	
+	verb_select_parent.addEventListener("keydown", function(event) {	
+	var x = event.which || event.keyCode;
+	if (x === 13) {		
+		add_verb_from_select();
+		load_possible_mutations();
+	}
+	});
+	
+	update_verbs_collapsible_text();
+  }
+  
+  function exam_div_clicked(is_practice){		
+	document.getElementById("is_exam_cb").checked = is_practice;		
+	get_is_on_exam();
+  }
+  
+  function add_verb_from_select(){
+	var verb_select = document.getElementById("verb_select");
+	var current_selected_verb = verb_select.value;
+	if (current_selected_verb != ""){
+		add_verbs_to_box([current_selected_verb]);
+		verb_select.value = "";
+	}
+  }
+  
+  function get_filtered_verbs_by_freq(){
+	ratio = parseFloat(document.getElementById("level_select").value);
+	number_of_verbs_in_pool = parseInt(ratio * sorted_verbs.length);	
+	return sorted_verbs.slice(0, number_of_verbs_in_pool);
+  }
+  
+  function generate_random_verbs(){
+	verbs_pool = get_filtered_verbs_by_freq();
+	number_of_verbs_to_generate = document.getElementById("number_of_verbs_to_generate_input").value;
+	generated_verbs = get_random_from_list(verbs_pool, number_of_verbs_to_generate);
+	update_url_params();
+	add_verbs_to_box(generated_verbs);
+	document.getElementById("verbs_box").value = generated_verbs;	
+	load_possible_mutations();
+  }
+  
+  function number_of_verbs_input_chnage(){
+	my_numeric = document.getElementById("number_of_verbs_to_generate_input");
+	MAX_VERBS_TO_GENERATE_VALUE = 500
+	MIN_VERBS_TO_GENERATE_VALUE = 1
+	if (my_numeric.value > MAX_VERBS_TO_GENERATE_VALUE){		
+		my_numeric.value = MAX_VERBS_TO_GENERATE_VALUE
+	}
+	if (my_numeric.value < MIN_VERBS_TO_GENERATE_VALUE){
+		my_numeric.value = MIN_VERBS_TO_GENERATE_VALUE
+	}
+  }
+    
+  function get_is_on_exam(){
+	already_in_exam = is_exam;
+	is_exam = document.getElementById("is_exam_cb").checked;
+	update_instructions();
+	// if we have change:
+	if (is_exam != already_in_exam){
+		end_exam(true);
+	}
+  }
+  
+  function update_instructions(){
+	p_element = document.getElementById("instruction_p");
+	mode_div = document.getElementById("mode_div");
+	var new_border_color = "";
+	var new_text = ""
+	if (is_exam){
+		new_text = "<h2> Exam Mode </h2> You will be asked only once for each mutation. Be carefull. <br> press (Enter) to submit your response. <br> Good Luck!"
+		new_border_color = "#2196F3";
+	}
+	else{
+		new_text = "<h2> Practice Mode </h2> Press (Enter) to submit your response. <br> Press (→) if you already know the required mutation and don't want to be asked again. <br> Click on the verb in question to learn the meaning and mutation of verb"
+		new_border_color = "#000000";		
+	}
+	p_element.innerHTML = new_text;
+	mode_div.style.borderColor = new_border_color;
+  }
+  
+  function init_exam(){
+	var selected_inflections = get_selected_inflection_from_box();
+	if (!selected_inflections.length){
+		alert("please select inflection(s)");
+		return;
+	}
+	if (!selected_verbs.length){
+		alert("please select verb(s)");
+		return;
+	}	
+	mutation_dict = get_valid_mutations_dict();
+	if (is_obj_empty(mutation_dict)){
+		alert("We have no valid inflection for those verbs. change something!");
+		return;
+	}
+	
+	current_mutation = -1;
+	last_mutation = -1;
+	set_mutations_left();
+	mistake_counter = 0;
+	correct_counter = 0;
+	mutation_strike_counter = {}
+	set_answer_counter();
+	document.getElementById("res").innerHTML = "<br>";
+	document.getElementById("consider").innerHTML = "";
+	var user_answer_input = document.getElementById("user_answer");
+	user_answer_input.disabled = false;
+	user_answer_input.placeholder = "";
+	// scroll to page buttom
+	window.scrollTo(0, document.body.scrollHeight);
+	set_focus_on_user_answer();
+	start_q();
+  }  
+
+  function set_focus_on_user_answer(){
+	document.getElementById("user_answer").focus();
+  }
+  
+  function start_q(){
+	document.getElementById("user_answer").value = "";	
+	document.getElementById("consider").innerHTML = "";	
+	current_mutation = select_mutation()    
+	dispaly_question();
+	display_consider();
+  }
+  
+  function display_consider(){
+	if (current_mutation in mutation_strike_counter){
+		if (mutation_strike_counter[current_mutation] >= 3){
+			document.getElementById("consider").innerHTML = "You got this right 3 times in a row. cosider pressing (→)";
+		}
+	}
+  } 
+  
+  function dispaly_question(){
+	inflection_text = get_inflection_text(current_mutation[1]);
+	wiki_link = get_wiki_link(current_mutation[0]);
+	verb_text = "<a href=\"" + wiki_link + "\" target=\"_blank\">" + current_mutation[0] + "</a>";
+	document.getElementById("question").innerHTML = verb_text + ", " + inflection_text;	
+  }
+  
+   function get_inflection_text(inf_code){
+		inflection_text = inflection_codes[inf_code];
+		//inflection_text = inflection_text.replace("indicative active", "");
+		//inflection_text = inflection_text.replace("1st singular", "ego");
+		//inflection_text = inflection_text.replace("2nd singular", "tu");
+		//inflection_text = inflection_text.replace("3rd singular", "is");
+		//inflection_text = inflection_text.replace("1st plural", "nos");
+		//inflection_text = inflection_text.replace("2nd plural", "vos");
+		//inflection_text = inflection_text.replace("3rd plural", "illi");
+		return inflection_text;
+   }
+
+  
+  function get_wiki_link(v){	
+	clearn_verb = v.split("(")[0];
+	wiki_link ="https://en.wiktionary.org/wiki/" + clearn_verb + "#Latin"; 
+	return wiki_link;
+  }
+  
+  function is_exam_completed(){
+	return is_obj_empty(mutation_dict);
+  }
+  
+  function conclude_q(){
+	if (is_user_correct()){
+		color = "green";
+		mutation_dict[current_mutation] /= 2;
+		correct_counter += 1;
+		if (current_mutation in mutation_strike_counter){
+			mutation_strike_counter[current_mutation] += 1;
+		}
+		else{
+			mutation_strike_counter[current_mutation] = 1;
+		}
+	}
+	else{
+		color = "red";
+		mutation_dict[current_mutation] = 1;
+		mistake_counter += 1;
+		mutation_strike_counter[current_mutation] = 0;
+	}	
+	
+	document.getElementById("res").style.color = color;
+	document.getElementById("res").innerHTML = get_correct_answer_for_current_mutation();
+	set_answer_counter();
+	
+	if (is_exam){
+		delete mutation_dict[current_mutation];
+		set_mutations_left();
+	}
+	if (!is_exam_completed()){
+		prevent_twice_in_a_row();
+		start_q();
+	}
+	else{		
+		end_exam();
+	}	
+  }
+  
+  function prevent_twice_in_a_row(){
+	var FACTOR = 100
+	
+	// in the current code, if it happened that the last is also the current, then the chances remain.
+	
+	// restore last
+	if (last_mutation in mutation_dict){
+		mutation_dict[last_mutation] *= FACTOR;
+	}
+	// avoid current
+	if (current_mutation in mutation_dict){
+		mutation_dict[current_mutation] /= FACTOR;
+	}
+	
+	last_mutation = current_mutation; 
+  }
+  
+  function set_answer_counter(){
+	document.getElementById("answer_counter").innerHTML = "Answers correct: " + correct_counter + "/" + (correct_counter+mistake_counter);
+  }
+  
+  function set_final_score(){
+	var total_answers = parseFloat(mistake_counter+correct_counter);
+	if (total_answers){
+		var final_score = parseInt(100* parseFloat(correct_counter) / parseFloat(mistake_counter+correct_counter));
+		document.getElementById("answer_counter").innerHTML = "Final score: " + final_score + "% [" + correct_counter + "/" + (correct_counter+mistake_counter) + "]";
+	}
+  }
+  
+
+  function add_verbs_to_box(new_verbs_to_add){
+	verbs_box = document.getElementById("verbs_box")
+	verbs_string = verbs_box.value;
+	current_verbs = verbs_string.split(",");
+	if (current_verbs[0] == ""){
+		current_verbs.shift();
+	}
+	current_verbs.push(new_verbs_to_add);
+	verbs_box.value = current_verbs;
+  }
+  
+  function load_possible_mutations(){
+	get_verbs_from_input();
+	get_valid_mutations_dict();
+	update_inflection_collapsible_text();
+	update_verbs_collapsible_text();
+  }
+  
+  function update_inflection_collapsible_text(){
+	var selected_inflections = get_selected_inflection_from_box();
+	new_text = "Inflections Selection (Selected: " + selected_inflections.length + ")";
+	document.getElementById("inflections_selection_collapsible_btn").innerHTML = new_text;	
+	
+  }
+  
+  function update_verbs_collapsible_text(){
+	new_text = "Verbs Selection (Selected: " + selected_verbs.length + ")";	
+	document.getElementById("verbs_selection_collapsible_btn").innerHTML = new_text;
+		
+  }
+  
+  function update_missing_collapsible_text(bad_mutations){
+	new_text = "Missing Mutations (" + bad_mutations.length + ")";	
+	document.getElementById("missing_collapsible_btn").innerHTML = new_text;		
+  }
+
+  
+  function get_verbs_from_input(){
+	selected_verbs = [];
+	verbs_string = document.getElementById("verbs_box").value;
+	_verbs = verbs_string.split(",");	
+	bad_verbs = []
+	for (i = 0; i < _verbs.length; i++) {
+		current_verb = _verbs[i].trim();
+		if (current_verb == ""){
+			continue;}
+		if (current_verb in all_verbs){
+			if (!(selected_verbs.includes(current_verb))) {
+				selected_verbs.push(current_verb);
+			}
+		}
+		else{
+			bad_verbs.push(current_verb);
+		}
+	}
+	
+	document.getElementById("verbs_box").value = selected_verbs;	
+	document.getElementById("verbs_error_box").innerHTML =  bad_verbs;
+	
+  }
+  
+  function remove_mutation(){
+	delete mutation_dict[current_mutation];
+	if (is_obj_empty(mutation_dict)){
+		document.getElementById("res").style.color = "green";		
+		end_exam();
+		document.getElementById("res").innerHTML = "You have them all! Select other verbs/inflections or try exam";
+	}
+	else{
+		document.getElementById("res").style.color = "gray";
+		document.getElementById("res").innerHTML = "Okay, you know this one...but what about the others?";
+		set_mutations_left();
+		start_q();
+	}
+  }
+  
+  function set_mutations_left(){
+	ml = Object.keys(mutation_dict).length
+	document.getElementById("mutations_left").innerHTML = "Mutations left: " + ml;
+  }
+  
+  function end_exam(reveresed=false){
+	document.getElementById("mutations_left").innerHTML = "";
+	document.getElementById("res").innerHTML = "<br>";
+	document.getElementById("question").innerHTML = "Question here";	
+	var user_answer_input = document.getElementById("user_answer");	
+	user_answer_input.disabled = true;
+	user_answer_input.value = "";
+	user_answer_input.placeholder = "Click Start to begin";	
+	document.getElementById("consider").innerHTML = "";			
+	if ((is_exam && !reveresed) || (!is_exam && reveresed)){
+		set_final_score();
+	}
+	else{
+		document.getElementById("answer_counter").innerHTML = "";
+	}
+	
+	correct_counter=0;
+	mistake_counter=0;
+  }
+  
+  function is_user_correct(){	
+	user_answer = document.getElementById("user_answer").value;
+	correct_answer = get_correct_answer_for_current_mutation();
+	return (user_answer == correct_answer);
+  }
+  
+  function get_correct_answer_for_current_mutation(){	
+	dict_res = all_verbs[current_mutation[0]][current_mutation[1]];
+	if (dict_res){
+		dict_res = dict_res.split(",")[0].trim();
+		dict_res = dict_res.replace("  ", " ");
+		dict_res = dict_res.replace(" 1", "");
+	}
+    return dict_res;
+  }
+
+  
+  </script>
+  
+  <script>
+  function select_mutation(){
+	 return select_weighted_random(mutation_dict).split(",");
+  }
+  
+  function is_mutation_valid(verb, inflection){
+	dict_value = all_verbs[verb][inflection];
+	return (dict_value != null) && (dict_value != "--");
+  }
+  
+  function get_selected_inflection_from_box(){
+	var selected_inflections = [];
+	var to_box_options = document.getElementById("lstBox2").options;
+	for (i = 0; i < to_box_options.length; i++){
+		selected_inflections.push(to_box_options[i].value);
+	}
+	
+	return selected_inflections;
+  }
+  
+  function get_valid_mutations_dict(){
+	var mutation_dict = {};
+	var bad_mutations = [];
+	var bad_mutation_text = "";
+	var selected_inflections = get_selected_inflection_from_box();
+	for (i = 0, v_len = selected_verbs.length; i < v_len; i++) {
+		for (j = 0, i_len = selected_inflections.length; j < i_len; j++) {
+			if (is_mutation_valid(selected_verbs[i], selected_inflections[j])){				
+				mutation_dict[[selected_verbs[i], selected_inflections[j]]] = 1;
+			}
+			else{
+				bad_mutations.push([selected_verbs[i], selected_inflections[j]])				
+			}
+		}
+	}	
+	for (i = 0, b_len = bad_mutations.length; i < b_len; i++) {		
+		bad_mutation_text += " \"" + bad_mutations[i][0] + "\" does not have \"" + inflection_codes[bad_mutations[i][1]] + "\" inflection\n";
+	}
+	
+	update_missing_collapsible_text(bad_mutations);
+	
+	document.getElementById("inflections_error_box").innerHTML = bad_mutation_text;
+	
+	return mutation_dict;
+  }
+  
+  function load_verb_selection_params_from_url(){
+	number_of_verbs = load_number_of_verbs_from_url();
+	if (number_of_verbs){
+		document.getElementById("number_of_verbs_to_generate_input").value = number_of_verbs;
+		number_of_verbs_input_chnage();
+	}
+	level = load_level_from_url();	
+	if (level){
+		document.getElementById("level_select").value = level;
+		current_level = document.getElementById("level_select").value;
+		if (level != current_level){
+			document.getElementById("level_select").selectedIndex =0;			
+		}
+	}
+	
+	if (level && number_of_verbs){
+		generate_random_verbs();
+	}
+  }
+  
+  function selected_level_to_string(){
+	var level_string = document.getElementById("level_select").value;
+	return level_string;
+  }
+  
+  function selected_number_of_verbs_to_string(){
+	var number_of_verbs = document.getElementById("number_of_verbs_to_generate_input").value.toString();	
+	return number_of_verbs;
+
+  }
+  
+  function selected_inflections_to_string(){	
+	var selected_inflections = get_selected_inflection_from_box();
+	selection_array = [];
+	all_possible_inflections = get_all_possible_inflections();
+	for (i=0; i<all_possible_inflections.length; i++){
+		if (selected_inflections.includes(i.toString())){
+			selection_array.push(true);
+		}
+		else{
+			selection_array.push(false);
+		}
+	}
+	
+	// added to 120
+	selection_array.push(false);
+	selection_array.push(false);
+	selection_array.push(false);
+	
+	code = boolean_array_to_string(selection_array);		
+	return code;
+  }
+  
+  function string_to_selected_inflections(s){
+	_selection_array = string_to_boolean_array(s);
+	_selection_array.pop();
+	_selection_array.pop();
+	_selection_array.pop();	
+	selected_inflections = [];
+	for (i=0; i<_selection_array.length; i++){
+		if (_selection_array[i]){
+			selected_inflections.push(i.toString());
+		}
+	}	
+	return selected_inflections;
+  }
+  
+  function load_number_of_verbs_from_url(){
+	nv = get_param_from_url("nv");
+	if (nv){
+		return (parseInt(nv));
+	}
+	else{
+		return 0;
+	}
+  }
+  
+  function load_level_from_url(){
+	level = get_param_from_url("level");
+	return level;
+  }
+  
+  function load_default_inflections(){
+	inflection_code = get_param_from_url("inflections");
+	if (inflection_code)
+	{
+		inflection_code = get_param_from_url("inflections").toString();	
+		return string_to_selected_inflections(inflection_code);
+	}
+	else{
+		return [];
+	}
+  }
+  
+  function get_param_from_url(param){
+	var url_string = window.location.href
+	var url = new URL(url_string);
+	var c = url.searchParams.get(param);
+	return c;
+  }
+  
+  function select_weighted_random(prob){  
+	var i=0;
+	var sum=0;
+	var w_sum = 0;
+	for (x in prob){
+		w_sum += prob[x];
+	}
+	var r=Math.random() * w_sum;
+	for (i in prob) {
+		sum += prob[i];
+		if (r <= sum) return i;
+	 }
+  }
+  
+  function is_obj_empty(_obj){
+	for (i in _obj){
+		return false;}
+	return true;
+  }
+      
+  function get_random_from_list(l, count){	
+	var selected = [];
+	while (selected.length < count){
+		current_selected = l[Math.floor(Math.random() * l.length)];
+		if (!selected.includes(current_selected)){
+			selected.push(current_selected);
+		}
+	}
+	
+    return selected;
+  }
+  
+  function boolean_array_to_string(a){
+	c = chunkArray(a, 8);
+	res = "";	
+	for (i=0; i<c.length; ++i){
+		b = c[i].reduce((res, x) => res << 1 | x)
+		b = b.toString(16).padStart(2, '0');
+		res += b;
+	}
+	return res;
+  }
+  
+  function string_to_boolean_array(s){
+	c = chunkArray(s, 2)
+	res = []	
+	for (i=0; i<c.length; i++){
+		
+		b = parseInt(c[i], 16);		
+		a = [];
+		for (j=0; j<8; j++){					
+			a.push((b & 1) === 1)
+			b >>= 1
+		}
+		a.reverse();		
+		
+		res.push.apply(res, a)
+		
+	}	
+	return res;
+  }
+  
+  function chunkArray(myArray, chunk_size){
+    var index = 0;
+    var arrayLength = myArray.length;
+    var tempArray = [];
+    
+    for (index = 0; index < arrayLength; index += chunk_size) {
+        myChunk = myArray.slice(index, index+chunk_size);
+        // Do something if you want with the group
+        tempArray.push(myChunk);
+    }
+
+    return tempArray;
+  }
+  
+  </script>   
+
+</body>
+
+</html>
