@@ -931,7 +931,7 @@ input[type=number]{
   
   function is_mutation_valid(verb, inflection){
 	dict_value = all_verbs[verb][inflection];
-	return (dict_value != null) && (dict_value != "--");
+	return (dict_value != null) && (dict_value != "--") && (dict_value != "");
   }
   
   function get_selected_inflection_from_box(){
