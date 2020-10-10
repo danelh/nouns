@@ -2,7 +2,7 @@
 layout: default
 title: info
 ---
-# Latin Noun Trainer ([Part of Res Latinae](https://danelh.github.io/))
+# Latin Noun Trainer (Part of [Res Latinae](https://danelh.github.io/))
 
 ## Table of Contents
 
