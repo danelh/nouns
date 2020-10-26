@@ -656,6 +656,8 @@ input[type=number]{
 		return;
 	}
 	
+	send_ga_event('noun_start', 'noun_start', window.location.href);
+	
 	current_mutation = -1;
 	last_mutation = -1;
 	set_mutations_left();
@@ -1153,6 +1155,14 @@ input[type=number]{
 
     return tempArray;
   }
+  
+  function send_ga_event(event, cat, label){
+	  gtag('event', event, {
+	  'event_category' : cat,
+	  'event_label' : label
+		});
+  }
+
   
   </script>   
 
