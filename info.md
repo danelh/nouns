@@ -2,7 +2,7 @@
 layout: default
 title: info
 ---
-# Latin Noun Trainer (Part of [Res Latinae](https://danelh.github.io/))
+# [Latin Noun Trainer](https://danelh.github.io/nouns) (Part of [Res Latinae](https://danelh.github.io/))
 
 ## Table of Contents
 
@@ -18,7 +18,7 @@ title: info
 - [Contact information](#contact-information)
 
 ## Intro 
-This trainer was created mainly to allow the user to practice Latin nouns inflections. Each inflection (or mutation as reffered in this Trainer) consists of the noun-root and the tense-inflection. The user is given a mutation and is required to inflect it. For example for the noun "_amo_" and "_indicative active present 1st plural_", the correct inflection is _amamus_.
+This trainer was created mainly to allow the user to practice Latin nouns inflections. Each inflection (or mutation as reffered in this Trainer) consists of the noun-root and the tense-inflection. The user is given a mutation and is required to inflect it. For example for the noun "_mensa_" and "_acc_s_" (accusative singular), the correct inflection is _mensam_.
 
 The correct answers were taken from Wiktionary. In several cases there is more than one attested option for inflection. For example, according to Wiktionary for "[_navis_](https://en.wiktionary.org/wiki/navis#Latin)" and "_acc_p_" there are two options: _naves_ and _navis_. The Trainer supports both options from the user. 
 
@@ -32,7 +32,7 @@ With respect to the gender, **there might be errors** (for example in _folia_), 
 There are 3 ways to select noun to practice on:
 
  1. **Manual selection from list**:  in the list you can search for your nouns from the Trainer list, and select them.  Selecting a noun from the list, will append it to already selected nouns displayed in the box. 
- 2. **Writing directly in the nouns box**:  it is possible to write the nouns directly in the selected-nouns box. Make sure to have the nouns comma separated.  This option is recommended only in cases you have predefined list of nouns - for example when you saved the nouns from previous session - you can simply paste them in the box. **In this way you can load your nouns easily**. [Note that you may enter a noun which will be ultimately removed from the Trainer if it's missing from the list:  _volo_ , for example, will be removed because it is missing from the list - Trainer expected _volo(first)_ or _volo(irregular)_ .
+ 2. **Writing directly in the nouns box**:  it is possible to write the nouns directly in the selected-nouns box. Make sure to have the nouns comma separated.  This option is recommended only in cases you have predefined list of nouns - for example when you saved the nouns from previous session - you can simply paste them in the box. **In this way you can load your nouns easily**. [Note that you may enter a noun which will be ultimately removed from the Trainer if it's missing from the list.]
 3. **Automatic generator**: you can tell the Trainer to automatically generate nouns. To use this option you should specify 1) how many nouns you want to be generated 2) the level. Then you should click "Generate". The generated nouns will override  the current selected nouns.
 
 ## Level
