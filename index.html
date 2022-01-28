@@ -335,7 +335,7 @@ input[type=number]{
   </div>  
   </div>
     
-  <button id="verbs_selection_collapsible_btn" type="button" class="collapsible">Verbs Selection</button>
+  <button id="verbs_selection_collapsible_btn" type="button" class="collapsible">Nouns Selection</button>
   <div class="content">
   <div id="user_verb_selection_div">
 	  <div id=datalist_div>
@@ -347,20 +347,20 @@ input[type=number]{
 	  <div id="auto_selection_div">
 		  <label for="level_select">Choose a level:</label>
 		  <select id="level_select">
-			  <option value="0.1" selected="selected">Top 10% of verbs</option>
-			  <option value="0.25">Top 25% of verbs</option>
-			  <option value="0.5">Top 50% of verbs</option>
-			  <option value="1">All verbs</option>
+			  <option value="0.1" selected="selected">Top 10% of nouns</option>
+			  <option value="0.25">Top 25% of nouns</option>
+			  <option value="0.5">Top 50% of nouns</option>
+			  <option value="1">All nouns</option>
 		  </select>		  
 		  <div id="random_generator_div">
-			  <label for="number_of_verbs_to_generate_input">Number of verbs to generate:</label>
+			  <label for="number_of_verbs_to_generate_input">Number of nouns to generate:</label>
 			  <input id="number_of_verbs_to_generate_input" type="number" value="10" oninput=number_of_verbs_input_chnage() maxlength="3" size="3">
 			  <button type="button" id="generate_random verbs" onclick=generate_random_verbs()>Generate </button>
 		  </div>
 	  </div>
   </div>
   <div id="selected_verbs_div">
-	  <label> Selected Verbs: </label>
+	  <label> Selected nouns: </label>
 	  <textarea id="verbs_box" name="verbs_box" rows="4" onchange=load_possible_mutations()></textarea>
   </div>    
   </div>
